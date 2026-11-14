@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Política de privacidad de ToolBox Gratis.">
+  <title>Política de privacidad | ToolBox Gratis</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg:#08111f;
+      --card:#111d2e;
+      --text:#e5edf9;
+      --muted:#a4b2c6;
+      --blue:#3b82f6;
+      --line:#26364d;
+    }
+    * {box-sizing:border-box}
+    body {
+      margin:0;
+      padding:24px 16px;
+      background:var(--bg);
+      color:var(--text);
+      font-family:system-ui,Arial,sans-serif;
+      line-height:1.7;
+    }
+    main {
+      max-width:850px;
+      margin:auto;
+    }
+    header {
+      padding:22px;
+      border-radius:16px;
+      background:linear-gradient(120deg,#071426,#1d4ed8);
+      margin-bottom:22px;
+    }
+    h1 {margin:0;font-size:2rem}
+    h2 {
+      margin-top:28px;
+      font-size:1.2rem;
+      color:#93c5fd;
+    }
+    .card {
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:15px;
+      padding:22px;
+    }
+    p,li {color:var(--muted)}
+    a {color:#93c5fd}
+    .back {
+      display:inline-block;
+      margin-top:22px;
+      padding:10px 15px;
+      background:var(--blue);
+      color:white;
+      border-radius:9px;
+      text-decoration:none;
+    }
+    footer {
+      text-align:center;
+      color:var(--muted);
+      margin-top:28px;
+      font-size:.85rem;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Política de privacidad</h1>
+    <p>ToolBox Gratis</p>
+  </header>
+
+  <article class="card">
+    <p><strong>Última actualización:</strong> 13 de noviembre de 2026.</p>
+
+    <p>
+      En ToolBox Gratis queremos ofrecer herramientas sencillas
+      y gratuitas, respetando la privacidad de las personas que
+      visitan nuestra página.
+    </p>
+
+    <h2>1. Datos que introducen los visitantes</h2>
+    <p>
+      Las calculadoras, el conversor de temperatura, el contador
+      de palabras y los generadores funcionan directamente en
+      el navegador del visitante.
+    </p>
+    <p>
+      El código actual de estas herramientas no envía los números,
+      textos ni resultados introducidos a un servidor propio.
+      No solicitamos nombres, teléfonos, direcciones ni cuentas
+      para utilizar las herramientas.
+    </p>
+
+    <h2>2. Preferencia de tema</h2>
+    <p>
+      La página permite elegir entre modo oscuro y modo claro.
+      Para recordar esa preferencia, utiliza el almacenamiento
+      local del navegador (localStorage).
+      Esta preferencia se guarda en el dispositivo del visitante
+      y no se utiliza para identificarlo.
+    </p>
+
+    <h2>3. Alojamiento y datos técnicos</h2>
+    <p>
+      Esta página está alojada mediante GitHub Pages, un servicio
+      proporcionado por GitHub.
+    </p>
+    <p>
+      GitHub informa que registra y almacena las direcciones IP
+      de las personas que visitan sitios alojados en GitHub Pages
+      por motivos de seguridad, incluso si no tienen una cuenta
+      de GitHub.
+    </p>
+    <p>
+      Este tratamiento depende de GitHub y no está controlado
+      directamente por ToolBox Gratis.
+    </p>
+    <p>
+      Puedes consultar la información de GitHub en su
+      <a href="https://docs.github.com/es/site-policy/privacy-policies/github-general-privacy-statement">
+        Declaración general de privacidad
+      </a>.
+    </p>
+
+    <h2>4. Cookies y publicidad</h2>
+    <p>
+      Actualmente ToolBox Gratis no tiene anuncios publicitarios
+      instalados ni utiliza Google Analytics.
+    </p>
+    <p>
+      Si en el futuro incorporamos publicidad de terceros, como
+      Google AdSense, actualizaremos esta política antes de
+      activarla para explicar qué proveedores intervienen,
+      qué cookies o tecnologías pueden utilizar y cómo pueden
+      gestionarse las preferencias de privacidad.
+    </p>
+
+    <h2>5. Servicios externos</h2>
+    <p>
+      El alojamiento de la página depende de GitHub Pages.
+      Los servicios externos pueden tener sus propias políticas
+      y condiciones de privacidad.
+    </p>
+    <p>
+      Recomendamos consultar las políticas de esos proveedores
+      para conocer cómo tratan la información.
+    </p>
+
+    <h2>6. Cambios en esta política</h2>
+    <p>
+      Esta política podrá actualizarse cuando cambien las
+      funciones de la página o se incorporen nuevos servicios.
+      La fecha de actualización aparecerá al principio del texto.
+    </p>
+
+    <h2>7. Contacto</h2>
+    <p>
+      Actualmente ToolBox Gratis no dispone de formulario de
+      contacto ni solicita datos personales para utilizar
+      sus herramientas.
+    </p>
+  </article>
+
+  <a class="back" href="index.html">← Volver a ToolBox Gratis</a>
+
+  <footer>
+    © <span id="year"></span> ToolBox Gratis
+  </footer>
+</main>
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+</body>
+</html>
