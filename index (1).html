@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="description" content="Herramientas online gratuitas: calculadora, porcentajes, conversores, contador de palabras y generadores.">
+  <title>ToolBox Gratis — Herramientas online gratuitas</title>
+  <style>
+    :root{--blue:#2563eb;--blue2:#1d4ed8;--ink:#172033;--muted:#64748b;--line:#e5eaf2;--bg:#f5f7fb;--card:#fff}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    header{background:linear-gradient(120deg,#1d4ed8,#4f46e5);color:white;padding:26px 16px 34px}
+    .wrap{max-width:1050px;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{font-weight:850;font-size:1.3rem;letter-spacing:-.5px}.pill{font-size:.78rem;border:1px solid #ffffff66;border-radius:99px;padding:6px 10px}
+    h1{font-size:clamp(1.8rem,5vw,2.7rem);line-height:1.08;margin:30px 0 10px;letter-spacing:-1px}
+    header p{margin:0;color:#e0e7ff;max-width:620px}
+    .search{margin-top:22px;display:flex;gap:8px;background:white;padding:7px;border-radius:14px;max-width:650px;box-shadow:0 10px 28px #102b6b33}
+    .search input{flex:1;min-width:0;border:0;padding:11px;font-size:1rem;outline:0;color:var(--ink)}
+    main{max-width:1050px;margin:24px auto;padding:0 16px 48px}
+    .intro{display:flex;justify-content:space-between;align-items:end;gap:12px;margin-bottom:15px}
+    h2{font-size:1.25rem;margin:0 0 5px}.sub{color:var(--muted);font-size:.9rem;margin:0}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));gap:14px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:0 3px 12px #14264a08}
+    .card h3{margin:0 0 5px;font-size:1.04rem}.desc{margin:0 0 15px;color:var(--muted);font-size:.88rem}
+    .tool{border-top:1px solid var(--line);padding-top:14px}
+    label{display:block;font-size:.85rem;font-weight:650;margin:10px 0 5px}
+    input,select,textarea{width:100%;border:1px solid #d7deea;border-radius:10px;padding:11px 12px;font:inherit;background:#fff;color:var(--ink);min-width:0}
+    textarea{min-height:105px;resize:vertical}
+    button{border:0;background:var(--blue);color:#fff;padding:11px 14px;border-radius:10px;font-weight:700;font-size:.92rem;cursor:pointer}
+    button:hover{background:var(--blue2)}button.secondary{background:#eef2ff;color:#1e40af}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.result{background:#f1f5ff;border:1px solid #dbeafe;padding:11px;border-radius:10px;margin-top:10px;min-height:42px;overflow-wrap:anywhere;font-size:.93rem}
+    .hidden{display:none!important}.small{font-size:.78rem;color:var(--muted)}.ad-note{margin:20px 0;background:#fff;border:1px dashed #cbd5e1;border-radius:13px;padding:15px;text-align:center;color:#64748b;font-size:.83rem}
+    footer{border-top:1px solid var(--line);padding:22px 16px;text-align:center;color:var(--muted);font-size:.82rem}
+    .no-results{padding:20px;color:var(--muted);text-align:center}
+    @media(max-width:520px){.top{align-items:flex-start}.pill{font-size:.7rem}header{padding-top:20px}.intro{align-items:flex-start;flex-direction:column}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top"><div class="brand">🧰 ToolBox Gratis</div><span class="pill">100% gratis · Sin registro</span></div>
+    <h1>Herramientas útiles,<br>sin complicaciones.</h1>
+    <p>Calcula, convierte y genera resultados al instante. Todas las herramientas funcionan directamente en tu dispositivo.</p>
+    <div class="search"><input id="search" type="search" placeholder="Buscar una herramienta..." aria-label="Buscar herramientas"><button onclick="filterTools()">Buscar</button></div>
+  </div>
+</header>
+<main>
+  <div class="intro"><div><h2>Todas las herramientas</h2><p class="sub">Elige una herramienta y empieza a utilizarla.</p></div><span class="small" id="count">6 herramientas</span></div>
+  <div class="grid" id="tools">
+    <section class="card" data-search="calculadora básica matemáticas sumar restar multiplicar dividir">
+      <h3>🧮 Calculadora básica</h3><p class="desc">Realiza operaciones matemáticas sencillas.</p>
+      <div class="tool"><label for="calcA">Primer número</label><input id="calcA" type="number" step="any" placeholder="Ej. 25">
+      <label for="calcOp">Operación</label><select id="calcOp"><option value="+">Sumar (+)</option><option value="-">Restar (−)</option><option value="*">Multiplicar (×)</option><option value="/">Dividir (÷)</option></select>
+      <label for="calcB">Segundo número</label><input id="calcB" type="number" step="any" placeholder="Ej. 5">
+      <div class="actions"><button onclick="calculate()">Calcular</button><button class="secondary" onclick="clearResult('calcResult')">Limpiar</button></div><div class="result" id="calcResult" aria-live="polite">El resultado aparecerá aquí.</div></div>
+    </section>
+    <section class="card" data-search="porcentaje calculadora descuento aumento matemáticas">
+      <h3>％ Calculadora de porcentajes</h3><p class="desc">Calcula qué cantidad representa un porcentaje.</p>
+      <div class="tool"><label for="percent">Porcentaje (%)</label><input id="percent" type="number" step="any" placeholder="Ej. 15">
+      <label for="base">De esta cantidad</label><input id="base" type="number" step="any" placeholder="Ej. 200">
+      <div class="actions"><button onclick="percentage()">Calcular porcentaje</button></div><div class="result" id="percentResult" aria-live="polite">El resultado aparecerá aquí.</div></div>
+    </section>
+    <section class="card" data-search="conversor convertidor temperatura celsius fahrenheit kelvin grados">
+      <h3>🌡️ Conversor de temperatura</h3><p class="desc">Convierte entre Celsius, Fahrenheit y Kelvin.</p>
+      <div class="tool"><label for="tempValue">Temperatura</label><input id="tempValue" type="number" step="any" placeholder="Ej. 25">
+      <label for="tempFrom">De</label><select id="tempFrom"><option value="C">Celsius (°C)</option><option value="F">Fahrenheit (°F)</option><option value="K">Kelvin (K)</option></select>
+      <label for="tempTo">A</label><select id="tempTo"><option value="F">Fahrenheit (°F)</option><option value="C">Celsius (°C)</option><option value="K">Kelvin (K)</option></select>
+      <div class="actions"><button onclick="convertTemp()">Convertir</button></div><div class="result" id="tempResult" aria-live="polite">El resultado aparecerá aquí.</div></div>
+    </section>
+    <section class="card" data-search="contador palabras caracteres texto letras">
+      <h3>📝 Contador de palabras</h3><p class="desc">Cuenta palabras, caracteres y espacios de un texto.</p>
+      <div class="tool"><label for="textInput">Escribe o pega tu texto</label><textarea id="textInput" placeholder="Escribe aquí..." oninput="countText()"></textarea><div class="result" id="textResult" aria-live="polite">0 palabras · 0 caracteres</div></div>
+    </section>
+    <section class="card" data-search="generador números aleatorios al azar sorteo">
+      <h3>🎲 Generador de números aleatorios</h3><p class="desc">Obtén un número al azar dentro de un intervalo.</p>
+      <div class="tool"><label for="minNum">Número mínimo</label><input id="minNum" type="number" value="1" step="1">
+      <label for="maxNum">Número máximo</label><input id="maxNum" type="number" value="100" step="1">
+      <div class="actions"><button onclick="randomNumber()">Generar número</button></div><div class="result" id="randomResult" aria-live="polite">Tu número aparecerá aquí.</div></div>
+    </section>
+    <section class="card" data-search="generador contraseña password clave segura aleatoria">
+      <h3>🔐 Generador de contraseñas</h3><p class="desc">Crea una contraseña aleatoria. Se genera localmente en tu dispositivo.</p>
+      <div class="tool"><label for="passLength">Longitud: <span id="lengthLabel">16</span> caracteres</label><input id="passLength" type="range" min="8" max="32" value="16" oninput="lengthLabel.textContent=this.value">
+      <div class="actions"><button onclick="makePassword()">Generar contraseña</button><button class="secondary" onclick="copyPassword()">Copiar</button></div><div class="result" id="passResult" aria-live="polite">Tu contraseña aparecerá aquí.</div><p class="small">No reutilices contraseñas y guárdalas en un gestor confiable.</p></div>
+    </section>
+  </div>
+  <div class="ad-note">Espacio reservado para publicidad futura. Los anuncios se añadirán únicamente cuando la web cumpla las políticas de la plataforma publicitaria.</div>
+  <section class="card"><h3>Acerca de ToolBox Gratis</h3><p class="desc" style="margin-bottom:0">Nuestro objetivo es ofrecer herramientas sencillas y gratuitas. Los cálculos se realizan en tu navegador; el texto que escribas en estas herramientas no se envía a nuestros servidores.</p></section>
+</main>
+<footer>© <span id="year"></span> ToolBox Gratis · Herramientas gratuitas online</footer>
+<script>
+  const $ = id => document.getElementById(id);
+  function show(id,msg){$(id).textContent=msg}
+  function clearResult(id){show(id,"El resultado aparecerá aquí.")}
+  function fmt(n){return Number(n.toFixed(8)).toString()}
+  function calculate(){
+    const a=Number($("calcA").value),b=Number($("calcB").value),op=$("calcOp").value;
+    if($("calcA").value===""||$("calcB").value===""){show("calcResult","Introduce los dos números.");return}
+    if(op==="/"&&b===0){show("calcResult","No se puede dividir entre cero.");return}
+    const r=op==="+"?a+b:op==="-"?a-b:op==="*"?a*b:a/b;
+    show("calcResult","Resultado: "+fmt(r));
+  }
+  function percentage(){
+    const p=Number($("percent").value),b=Number($("base").value);
+    if($("percent").value===""||$("base").value===""){show("percentResult","Introduce el porcentaje y la cantidad.");return}
+    show("percentResult",fmt(p)+"% de "+fmt(b)+" = "+fmt(p/100*b));
+  }
+  function convertTemp(){
+    const v=Number($("tempValue").value),from=$("tempFrom").value,to=$("tempTo").value;
+    if($("tempValue").value===""){show("tempResult","Introduce una temperatura.");return}
+    let c=from==="C"?v:from==="F"?(v-32)*5/9:v-273.15;
+    let out=to==="C"?c:to==="F"?c*9/5+32:c+273.15;
+    show("tempResult","Resultado: "+fmt(out)+" "+(to==="C"?"°C":to==="F"?"°F":"K"));
+  }
+  function countText(){
+    const t=$("textInput").value,trim=t.trim(),words=trim?trim.split(/\s+/).length:0;
+    show("textResult",words+" palabras · "+t.length+" caracteres · "+t.replace(/\s/g,"").length+" caracteres sin espacios");
+  }
+  function randomNumber(){
+    const min=Number($("minNum").value),max=Number($("maxNum").value);
+    if($("minNum").value===""||$("maxNum").value===""||!Number.isInteger(min)||!Number.isInteger(max)||max<min){show("randomResult","Introduce números enteros válidos y asegúrate de que el máximo sea mayor o igual al mínimo.");return}
+    const n=Math.floor(Math.random()*(max-min+1))+min;show("randomResult","Tu número aleatorio es: "+n);
+  }
+  function makePassword(){
+    const chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?";
+    const len=Number($("passLength").value);let out="";
+    const bytes=new Uint32Array(len);crypto.getRandomValues(bytes);
+    for(let i=0;i<len;i++)out+=chars[bytes[i]%chars.length];
+    show("passResult",out);
+  }
+  async function copyPassword(){
+    const p=$("passResult").textContent;
+    if(!p||p==="Tu contraseña aparecerá aquí."){show("passResult","Primero genera una contraseña.");return}
+    try{await navigator.clipboard.writeText(p);show("passResult",p+" (copiada)")}catch(e){show("passResult",p+" — selecciona el texto para copiarlo.")}
+  }
+  function filterTools(){
+    const q=$("search").value.trim().toLowerCase();let visible=0;
+    document.querySelectorAll(".card[data-search]").forEach(card=>{const ok=(card.dataset.search+" "+card.innerText).toLowerCase().includes(q);card.classList.toggle("hidden",!ok);if(ok)visible++});
+    $("count").textContent=visible+" herramientas";
+  }
+  $("search").addEventListener("input",filterTools);
+  $("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
